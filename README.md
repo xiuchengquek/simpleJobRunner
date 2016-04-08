@@ -63,13 +63,17 @@ qsub -cwd -b y -j y -pe smp 2 -V -N simpleWorker python simpleJobRunner/genericW
 # example : qsub -cwd -b y -j y -pe smp 2 -V -N simpleWorker python simpleJobRunner/genericWorker.py tcp://123.456.789:5555 tcp://123.456.789:5556
 ```
 5. Start the sinker
-    - you will need to listen to the port that the the worker is sending to 
+    - you will need to listen to the port that the the worker is sending to
+    - note the sinker will be run on the foreground. you can usen `nohup` wiht `&` for the job to run on the foregorund
+    - you can also open another session
+     
 ```
 python simpleJobRunner/genericSinker.py <tcp_ip_and_port_here>_
 # example :  python simpleJobRunner/genericSinker.py tcp://*:5556
 ```
 6. Start sending your jobs using the ventilator
     - you will need to send it to the port that the worker is listening to
+    - Note you can submit different jobs each time. 
 ```
 python  simpleJobRunner/genericVentilator.py  <worker_recieving_port_and_ip_>_ <sinker_recieving_ip_and_port> <bash_script_to_run>
 # example python simpleJobRunner/genericVentilator.py  tcp://*:5555 tcp://localhost:5556 sample.sh
