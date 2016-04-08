@@ -1,6 +1,6 @@
 import zmq
 
-def main(receiver_ip, logfile):
+def main(receiver_ip):
     context = zmq.Context()
     # Get reciever
     receiver = context.socket(zmq.PULL)
