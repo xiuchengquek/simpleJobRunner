@@ -7,6 +7,7 @@ def main(receiver_ip):
     receiver.bind(receiver_ip)
     while True:
         msg = receiver.recv_unicode()
+        print(msg)
 
 if __name__ == '__main__':
     receiver_ip = "tcp://*:5558"
