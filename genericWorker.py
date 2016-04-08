@@ -13,8 +13,7 @@ def main(reciever_ip, sinker_ip):
     sinker.connect(sinker_ip)
 
     while True:
-        data = receiver.recv_json()
-        bash_script = data['script']
+        bash_script = receiver.recv_unicode()
         cmd = ['sh', bash_script]
         p = subprocess.check_call(cmd)
         if (p == 1):
