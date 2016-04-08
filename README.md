@@ -56,6 +56,7 @@ chmod +x simple.sh
 ```
 4. Qsub the worker
     - you will need to find outthe ventitlator and sinker ip, you can find by running `hostname -i` .
+    - note you choose to run it on the local machine without qsub for testing as well. 
 
 ```
 qsub -cwd -b y -j y -pe smp 2 -V -N simpleWorker python simpleJobRunner/genericWorker.py <ventitlator_ip_and_port_here_> <sinker_up_and_port_here>
@@ -65,7 +66,7 @@ qsub -cwd -b y -j y -pe smp 2 -V -N simpleWorker python simpleJobRunner/genericW
     - you will need to listen to the port that the the worker is sending to 
 ```
 python simpleJobRunner/genericSinker.py <tcp_ip_and_port_here>_
-# example :  python simpleJobRunner/genericSinker.py tcp://*:5558
+# example :  python simpleJobRunner/genericSinker.py tcp://*:5556
 ```
 6. Start sending your jobs using the ventilator
     - you will need to send it to the port that the worker is listening to
