@@ -1,4 +1,5 @@
 import zmq
+import sys
 
 def main(receiver_ip):
     context = zmq.Context()
@@ -10,5 +11,5 @@ def main(receiver_ip):
         print(msg)
 
 if __name__ == '__main__':
-    receiver_ip = "tcp://*:5558"
+    receiver_ip = sys.argv[1]
     main(receiver_ip)
